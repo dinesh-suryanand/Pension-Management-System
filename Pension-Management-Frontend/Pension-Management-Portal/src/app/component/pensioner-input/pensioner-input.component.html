@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+<div class="bg-image" style="margin-top: 50px;">
+
+    <div class="d-flex justify-content-center h-50">
+        <div class="user_card mt-5">
+            <div class="d-flex justify-content-center">
+                <div style="margin-top: 10px;margin-bottom:-90px;">
+                    <h3>Pension Input Details</h3>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form #pensionInputForm="ngForm" (ngSubmit)="onSubmitPensionDetails(pensionInputForm.value)">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="name" placeholder="Username" ngModel
+                            #usernameInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="usernameInput.invalid && usernameInput.touched">Please enter a username</span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control" name="dateOfBirth" ngModel #dateOfBirthInput="ngModel"
+                            required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="dateOfBirthInput.invalid && dateOfBirthInput.touched">Please enter a Date Of
+                        Birth.</span>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="panNumber" placeholder="Pan Number" ngModel
+                            #panNumberInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="panNumberInput.invalid && panNumberInput.touched">Please enter a PAN Number.</span>
+
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="aadhaarNumber" placeholder="Aadhaar Number"
+                            ngModel #aadhaarNumberInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="aadhaarNumberInput.invalid && aadhaarNumberInput.touched">Please enter an Aadhaar
+                        Number.</span>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-wallet"></i></span>
+                        </div>
+                        <select class="form-control" name="pensionType" placeholder="Pension Type" ngModel #pensionTypeInput="ngModel" required>
+                            <option value="" disabled selected>Pension Type</option>
+                            <option value="self">Self</option>
+                            <option value="family">Family</option>
+                        </select>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="pensionTypeInput.invalid && pensionTypeInput.touched">Please select a Pension
+                        Type.</span>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button type="submit" [disabled]="pensionInputForm.invalid || showLoading" name="button"
+                            class="btn login_btn">
+                            <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                            <span *ngIf="showLoading">Loading...</span>
+                            <span *ngIf="!showLoading">Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="user_card mt-5 ms-2" *ngIf="pensionDetail">
+            <div class="d-flex justify-content-center links">
+                <div class="table-responsive p-5">
+                    <h1 class="text-center">Pensioner Details</h1>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Date Of Birth</th>
+                                <th scope="col">PAN Number</th>
+                                <th scope="col">Pension Type</th>
+                                <th scope="col">Pension Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{pensionDetail.name}}</td>
+                                <td>{{pensionDetail.dateOfBirth | date:'dd-MMM-yyyy'}}</td>
+                                <td>{{pensionDetail.panNumber}}</td>
+                                <td>{{pensionDetail.pensiontype}}</td>
+                                <td>{{pensionDetail.pensionAmount | currency:'INR' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a routerLink="/processPension" class="btn btn-success">Process Pension</a>
+        </div>
+    </div>
+</div>

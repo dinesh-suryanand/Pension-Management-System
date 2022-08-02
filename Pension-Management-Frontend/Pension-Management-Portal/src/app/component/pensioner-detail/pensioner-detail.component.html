@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="bg-image" style="margin-top: 50px;">
+    <div class="d-flex align-items-center h-50 m-5">
+        <form class="form-inline" #searchPensionerForm="ngForm"
+            (ngSubmit)="onSubmitDetails(searchPensionerForm.value.aadhaarNumber)">
+            <div class="input-group mb-2">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" class="form-control" name="aadhaarNumber" placeholder="Aadhaar Number" ngModel
+                    #aadhaarNumberInput="ngModel" required>
+            </div>
+            <span class="help-block" style="color:red;"
+                *ngIf="aadhaarNumberInput.invalid && aadhaarNumberInput.touched">Please enter an Aadhaar
+                Number.</span>
+
+            <div class="d-flex justify-content-center input-group mb-2 mx-3">
+                <button type="submit" [disabled]="searchPensionerForm.invalid || showLoading" name="button"
+                    class="btn btn-info">
+                    <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                    <span *ngIf="showLoading">Loading...</span>
+                    <span *ngIf="!showLoading">Search</span>
+                </button>
+            </div>
+        </form>
+
+        <div class="user_card ms-2" *ngIf="pensionerDetail">
+            <div class="table-responsive p-5">
+                <h1 class="text-center">Pensioner Details</h1>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date Of Birth</th>
+                            <th scope="col">PAN Number</th>
+                            <th scope="col">Aadhaar Number</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Allowance</th>
+                            <th scope="col">Pension Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>{{pensionerDetail.name}}</th>
+                            <td>{{pensionerDetail.dateOfBirth | date:'dd-MMM-yyyy'}}</td>
+                            <td>{{pensionerDetail.panNumber}}</td>
+                            <td>{{pensionerDetail.aadhaarNumber}}</td>
+                            <td>{{pensionerDetail.salary | currency:'INR'}}</td>
+                            <td>{{pensionerDetail.allowance | currency:'INR'}}</td>
+                            <td>{{pensionerDetail.pensionType}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

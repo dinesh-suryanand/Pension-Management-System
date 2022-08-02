@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="bg-image" style="margin-top: 50px;">
+
+    <div class="d-flex justify-content-center h-50">
+        <div class="user_card mt-5">
+            <div class="d-flex justify-content-center">
+                <div style="margin-top: 10px;margin-bottom:-90px;">
+                    <h3>Process Pension Details</h3>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form #processPensionForm="ngForm" (ngSubmit)="onProcessPension(processPensionForm.value)">
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="aadhaarNumber" placeholder="Aadhaar Number"
+                            ngModel #aadhaarNumberInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="aadhaarNumberInput.invalid && aadhaarNumberInput.touched">Please enter an Aadhaar
+                        Number.</span>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                        </div>
+                        <input type="number" class="form-control" name="pensionAmount" placeholder="Pension Amount"
+                            ngModel #pensionAmountInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="pensionAmountInput.invalid && pensionAmountInput.touched">Please enter a Pension
+                        Amount.</span>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                        </div>
+                        <input type="number" class="form-control" name="bankServiceCharge" placeholder="Bank Service Charge"
+                            ngModel #bankServiceChargeInput="ngModel" required>
+                    </div>
+                    <span class="help-block" style="color:red;"
+                        *ngIf="bankServiceChargeInput.invalid && bankServiceChargeInput.touched">Please enter a Bank 
+                        Service Charge.</span>
+                    <div class="d-flex justify-content-center mt-4 login_container">
+                        <button type="submit" [disabled]="processPensionForm.invalid || showLoading" name="button"
+                            class="btn login_btn">
+                            <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                            <span *ngIf="showLoading">Loading...</span>
+                            <span *ngIf="!showLoading">Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
