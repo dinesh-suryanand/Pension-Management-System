@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - cd Pension-Management-Backend/Pensioner-Detail-Microservice
+  build:
+    commands:
+      - echo Entered the build phase of Pensioner Detail Microservice...
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build completed successfully of Pensioner Detail Microservice
+artifacts:
+  files:
+    - Pension-Management-Backend/Pensioner-Detail-Microservice/target/pensioner-detail-microservice.jar
+  discard-paths: yes

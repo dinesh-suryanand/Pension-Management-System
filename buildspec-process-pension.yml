@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - cd Pension-Management-Backend/Process-Pension-Microservice
+  build:
+    commands:
+      - echo Entered the build phase of Process Pension Microservice...
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build completed successfully of Process Pension Microservice
+artifacts:
+  files:
+    - Pension-Management-Backend/Process-Pension-Microservice/target/process-pension-microservice.jar
+  discard-paths: yes
