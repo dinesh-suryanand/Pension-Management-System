@@ -19,6 +19,7 @@ import { PensionService } from './service/pension.service';
 import { DatePipe } from '@angular/common';
 import { PensionerDetailComponent } from './component/pensioner-detail/pensioner-detail.component';
 import { PensionDisburseComponent } from './component/pension-disburse/pension-disburse.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PensionDisburseComponent } from './component/pension-disburse/pension-d
     PensionerInputComponent,
     NavbarComponent,
     PensionerDetailComponent,
-    PensionDisburseComponent
+    PensionDisburseComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  authenticationUrl: 'http://localhost:8081',
-  processPensionUrl: 'http://localhost:8085',
-  pensionerDetailUrl: 'http://localhost:8084'
+  authenticationUrl: 'http://54.227.36.106:8081',
+  processPensionUrl: 'http://54.81.253.222:8085',
+  pensionerDetailUrl: 'http://3.94.160.191:8084'
 };
 
 /*
