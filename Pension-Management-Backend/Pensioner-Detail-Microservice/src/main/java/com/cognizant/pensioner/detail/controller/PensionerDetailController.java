@@ -37,31 +37,7 @@ public class PensionerDetailController extends ExceptionHandling {
 		this.pensionerDetailService = pensionerDetailService;
 		this.authenticationClient = authenticationClient;
 	}
-
-	/**
-	 * @param token
-	 * @param aadhaarNumber
-	 * @return
-	 * @throws ResourceNotFoundException
-	 * @throws PensionerDetailNotFoundException
-	 */
-	@GetMapping("/{aadhaarNumber}")
-	public PensionerDetail findByAadhaarNumber(@RequestHeader("Authorization") String token,
-			@PathVariable String aadhaarNumber) throws ResourceNotFoundException, PensionerDetailNotFoundException  {
-		logger.info("STARTED - findByAadhaarNumber");
-
-		if (authenticationClient.authorization(token)) {
-			PensionerDetail pensionerDetail = pensionerDetailService.findByAadhaarNumber(aadhaarNumber);
-			logger.info("END - findByAadhaarNumber");
-			return pensionerDetail;
-		} else {
-			logger.error("EXCEPTION - findByAadhaarNumber");
-			throw new ResourceNotFoundException("Token is not valid");
-		}
-	}
-
-	// all pensioner details
-
+	// displays all details of pensioner
 	/**
 	 * @param token
 	 * @return
@@ -78,4 +54,29 @@ public class PensionerDetailController extends ExceptionHandling {
 			throw new ResourceNotFoundException("Token is not valid");
 		}
 	}
+
+
+
+	/**
+	 * @param token
+	 * @param aadhaarNumber
+	 * @return
+	 * @throws ResourceNotFoundException
+	 * @throws PensionerDetailNotFoundException
+	 */
+	@GetMapping("/{aadhaarNumber}")
+	public PensionerDetail findByAadhaarNumber(@RequestHeader("Authorization") String token,
+											   @PathVariable String aadhaarNumber) throws ResourceNotFoundException, PensionerDetailNotFoundException  {
+		logger.info("STARTED - findByAadhaarNumber");
+
+		if (authenticationClient.authorization(token)) {
+			PensionerDetail pensionerDetail = pensionerDetailService.findByAadhaarNumber(aadhaarNumber);
+			logger.info("END - findByAadhaarNumber");
+			return pensionerDetail;
+		} else {
+			logger.error("EXCEPTION - findByAadhaarNumber");
+			throw new ResourceNotFoundException("Token is not valid");
+		}
+	}
+
 }
