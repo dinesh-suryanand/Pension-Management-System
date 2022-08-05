@@ -130,6 +130,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>pensioner-detail-microservice</finalName>
 	</build>
 
 </project>

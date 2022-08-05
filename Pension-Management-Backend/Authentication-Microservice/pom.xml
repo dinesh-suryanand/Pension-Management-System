@@ -125,6 +125,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>authorization-microservice</finalName>
 	</build>
 
 </project>

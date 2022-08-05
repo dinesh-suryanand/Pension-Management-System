@@ -1,7 +1,7 @@
 package com.cognizant.pensioner.detail.constant;
 
 public class CorsFilterConstant {
-	public static final String ANGULAR_URL = "http://localhost:4200";
+	public static final String ANGULAR_URL = "*";
 	public static final String ALLOWED_HEADER_ORIGIN = "Origin";
 	public static final String ALLOWED_HEADER_ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin";
 	public static final String ALLOWED_HEADER_CONTENT_TYPE = "Content-Type";

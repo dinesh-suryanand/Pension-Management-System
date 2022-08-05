@@ -140,6 +140,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>pension-disbursement-microservice</finalName>
 	</build>
 
 </project>
