@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+   pre_build:
+    commands:
+      - cd Pension-Management-Backend/Authentication-Microservice
+  build:
+    commands:
+      - echo Entered the build phase of Authorization Microservice...
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build completed successfully of Authorization Microservice
+artifacts:
+  files:
+    - Pension-Management-Backend/Authentication-Microservice/target/authorization-microservice.jar
+  discard-paths: yes
